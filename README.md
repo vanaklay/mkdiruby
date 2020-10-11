@@ -264,7 +264,7 @@ And that’s it! At this point, should you type `mkdiruby folder_chosen_name` fr
 ## Author
 - [Vanak Lay](https://github.com/vanaklay)
   
-## ProofReading ✔️
+## Proofreading
 - [Quentin Plaud](https://github.com/kentsbrockman)
 
 
