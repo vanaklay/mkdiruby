@@ -16,14 +16,14 @@ Let's do that...
 
 We need to create all these files and folder : 
 
-1 - Create a folder and go inside
+### 1. Create a folder and go inside
 ```
   $ mkdir mkdiruby
 
   $ cd mkdiruby
   -> mkdiruby
 ```
-2 - Create a Gemfile and put all the gems inside it
+### 2. Create a Gemfile and put all the gems inside it
 ```
   -> mkdiruby/ $ touch Gemfile
 ```
@@ -35,14 +35,14 @@ We need to create all these files and folder :
   gem 'rspec'
   gem 'gem_needed'
 ```
-3 - Run Bundle install to install dependencies
+### 3. Run Bundle install to install dependencies
 ```
   -> mkdiruby/ $ bundle install
 
   -> mkdiruby/ $ ls
   Gemfile Gemfile.lock
 ```
-3 - Don't forget the README.md !
+### 4. Don't forget the README.md !
 ```
   -> mkdiruby/ $ echo "# New app in Ruby" >> README.md
 
@@ -51,21 +51,21 @@ We need to create all these files and folder :
 ```
 With `echo` it writes what is in the double quote in the README.md file. If README.md doesn't exist, it create it.
 
-4 - Initialize rspec to execute some Test-Driven Development
+### 5. Initialize rspec to execute some Test-Driven Development
 ```
   -> mkdiruby/ $ rspec --init
 
   -> mkdiruby/ $ ls -a
   Gemfile Gemfile.lock README.md spec/ .rspec
 ```
-5 - Create a lib folder
+### 6. Create a lib folder
 ```
   -> mkdiruby/ $ mkdir lib
 
   -> mkdiruby/ $ ls -a
   Gemfile Gemfile.lock README.md spec/ .rspec lib/
 ```
-6 - Finally create app.rb and his test app_spec.rb
+### 7. Finally create app.rb and his test app_spec.rb
 ```
   -> mkdiruby/ $ touch lib/app.rb
 
@@ -81,7 +81,7 @@ Let's me say you something my friend, because i ❤️❤️ you ...
 
 ## Past 2020 ... The Coding Ages !
 
-1 - (7) Starting from the end of the western ages, we have an app folder ready to be use
+### 1. (8) Starting from the end of the western ages, we have an app folder ready to be use
 ```
   -> mkdiruby/ $ ls -a
   Gemfile Gemfile.lock README.md spec/ .rspec lib/
@@ -92,11 +92,13 @@ Let's me say you something my friend, because i ❤️❤️ you ...
   -> mkdiruby/ $ ls -a spec
   . .. app_spec.rb spec_helper.rb
 ```
-2 - Create a folder where we are
+So, let’s use the app.rb program to automate the different steps detailed above!
 
-The aim is that if we launch this command line `ruby lib/app.rb folder_name_to_create`, we have the ability to create a folder with the given name.
+### 2. Create a folder where we are
 
-In Ruby it is possible to retrieve the strings entered just after the command, in this case `folder_name_to_create` with the code `ARGV`
+The idea is that when you run the command `ruby /home/your/path/to/mkdiruby/app.rb folder_chosen_name`, you create a folder with the chosen name.
+
+In Ruby, it is possible to retrieve the strings entered right after the command typed in the CLI (in our case `folder_chosen_name`), thanks to the code `ARGV`. So let’s get back to our app.rb file:
 ```ruby
 # ./lib/app.rb
 
@@ -106,7 +108,7 @@ In Ruby it is possible to retrieve the strings entered just after the command, i
   -> mkdiruby/ $ ruby lib/app.rb new_folder
   new_folder
 ```
-In our code, we filter if the user doesn't enter a folder name or if the user enters folder name seperate by space like that: `folder name to create`
+In our app.rb file, we now want to program to stop the user in case he doesn't type a folder name at all or types a folder name with spaces such as `folder chosen name`:
 ```ruby
 # ./lib/app.rb
 
@@ -124,9 +126,11 @@ In our code, we filter if the user doesn't enter a folder name or if the user en
     end
   end
 ```
-With `Dir.mkdir(ARGV[0])`, we create an inplace folder with `ARGV[0]` as a value. Because `ARGV` returns an array we take the first item.
+While running the `Dir.mkdir(ARGV[0])` code, we create a folder on the spot with `ARGV[0]` as a value. Because the `ARGV` code returns an array, we want to take the first item only as the name of our Ruby project folder.
 
-3 - Create the Gemfile
+### 3. Create the Gemfile
+
+In our app.rb file, we now want to program the creation of a Gemfile filled with the necessary Gems:
 ```ruby
 # ./lib/app.rb
 
@@ -140,11 +144,13 @@ With `Dir.mkdir(ARGV[0])`, we create an inplace folder with `ARGV[0]` as a value
     puts "End creating Gemfile"
   end
 ```
-With `Dir.chdir`, we change directory to go inside the folder that we just created, it's like `cd your_folder` in command line. `Dir.pwd` is the position of where we are and `ARGV[0]` your app folder.
+While running the `Dir.chdir` code, we change the directory to go inside the folder that we just created. It would be equivalent to  `cd your_folder` typed in the CLI. Additionally, the `Dir.pwd` code would print your position on the Terminal screen (just like if you typed `pwd` in the CLI).
 
-With this command `File.open("Gemfile", "w")`, we create a new file if it doesn't exist or we just open it with the option to write it. Then we put all the informations that we need, all the gems.
+While running the `File.open("Gemfile", "w")` code, we create a new file if it doesn't exist yet, and/or we open it with the option to write in it. Here, we want to list the Ruby gems that we are going to use for the project. Of course, you are welcome to customize this part depending on which gems you need.
 
-4 - Launch the command line `bundle install` to install all the dependencies
+### 4. Run the command line `bundle install` to install all the dependencies
+
+In our app.rb file, we now want to program the run of the command `bundle install`:
 ```ruby
 # ./lib/app.rb
 
@@ -155,9 +161,11 @@ With this command `File.open("Gemfile", "w")`, we create a new file if it doesn'
     puts "End install dependencies"
   end
 ```
-`system("command_line")` allows us the ability to launch command line code in Ruby.
+In a nutshell, the `system("command_line")` code enables the Ruby program to run any command line in the CLI.
 
-5 - Launch the command line `rspec --init` to install spec folder and .rspec file
+### 5. Run the command line `rspec --init` to create a `spec` folder and a `.rspec` file
+
+Same logic, back in our app.rb file, we add:
 ```ruby
 # ./lib/app.rb
 
@@ -169,7 +177,9 @@ With this command `File.open("Gemfile", "w")`, we create a new file if it doesn'
   end
 ```
 
-6 - Create the lib folder to store all your application files
+### 6. Create the lib folder to store all your application files
+
+You now know the drill, let’s automate another action via our app.rb file:
 ```ruby
 # ./lib/app.rb
 
@@ -180,7 +190,7 @@ With this command `File.open("Gemfile", "w")`, we create a new file if it doesn'
     puts "End creating lib folder"
   end
 ```
-7 - Create the README.md file to explain what do your application or how we can use it or how we can install it
+### 7. Create a README.md file to explain what your application does, how we can use it and so on
 ```ruby
 # ./lib/app.rb
 
@@ -193,7 +203,7 @@ With this command `File.open("Gemfile", "w")`, we create a new file if it doesn'
   end
 ```
 
-8 - Initialize git
+### 8. Initialize git
 ```ruby
 # ./lib/app.rb
 
@@ -205,7 +215,7 @@ With this command `File.open("Gemfile", "w")`, we create a new file if it doesn'
   end
 ```
 
-9 - Create `.env` and `.gitignore` files
+### 9. Create `.env` and `.gitignore` files
 ```ruby
 # ./lib/app.rb
 
@@ -222,7 +232,9 @@ With this command `File.open("Gemfile", "w")`, we create a new file if it doesn'
   end
 ```
 
-10 - Put all in the perform method
+### 10. Wrap it all together in a perform method
+
+Nice! We now have scripted all the steps of a Ruby project folder creation. So, let’s put everything together in a perform method:
 ```ruby
 # .lib/app.rb
 
@@ -240,14 +252,19 @@ With this command `File.open("Gemfile", "w")`, we create a new file if it doesn'
   perform
 ```
 
-11 - Create an alias in your `~/.bash_profile` or `~/.zshrc` 
+### 11. Create an alias in your `~/.bash_profile` or `~/.zshrc` 
+
+And there we have the cherry on the cake! To gain even more time and productivity, let’s create a new alias to swiftly run our fresh program into the CLI:
 ```
   alias mkdiruby="ruby /home/your/path/to/mkdiruby/app.rb"
 ```
 
-Now you can run `mkdiruby` from anywhere in your computer.
+And that’s it! At this point, should you type `mkdiruby folder_chosen_name` from anywhere you are in the CLI, you’ll come up with a fully kitted Ruby folder, ready to be used!
 
 ## Author
 - [Vanak Lay](https://github.com/vanaklay)
+  
+## ProofReading ✔️
+- [Quentin Plaud](https://github.com/kentsbrockman)
 
 
