@@ -1,22 +1,22 @@
-# How to make mkdiruby file to automate Ruby's folder creation
+# How to automate Ruby's project creation?
 
-Every time you want to make an app in Ruby, you have plenty to do : 
-- lib folder
-- Gemfile file and put inside all the gems that you need for you app
-- Launch the command : rspec --init to initialize a TDD 
-- And more things...
+Every time you want to write a program using Ruby, you have plenty of things to do : 
+- Create a lib folder.
+- Create a Gemfile and place inside of it all the gems that you need to run your program
+- Run rspec --init on your CLI to initialize a TDD
+- And many more...
 
-It would be cool to be able to create an command line like `mkdiruby` who takes care of creating all this for us. Isn't it ?
+Wouldn't it be cool to have a command like `mkdiruby` that takes care of all the setup?
 
-It would work like `mkdir` except that it would take care of everything you need to do when you create a Ruby folder.
+It would work just like a `mkdir` command, except that this time the newly created folder would be filled with all the necessary stuff to begin with.
 
-Let's do that... 
+Alright, let's do it!
 
-## Long time ago ... The Westerns Ages !
+## Long time ago... The Westerns Ages!
 
-We need to create all these files and folder : 
+We needed to go step by step to create a folder and fill it up with a bunch of files:
 
-### 1. Create a folder and go inside
+### 1. Create a folder and place yourself inside of it
 ```
   $ mkdir mkdiruby
 
