@@ -1,7 +1,7 @@
 # How to automate Ruby's project creation?
 
 Every time you want to write a program using Ruby, you have plenty of things to do : 
-- Create a lib folder.
+- Create a lib folder
 - Create a Gemfile and place inside of it all the gems that you need to run your program
 - Run rspec --init on your CLI to initialize a TDD
 - And many more...
